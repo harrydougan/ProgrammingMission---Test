@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
 {
+
+    // Wheel Colliders
     public WheelCollider frontRight;
     public WheelCollider frontLeft;
     public WheelCollider backRight;
     public WheelCollider backLeft;
 
+    //Wheel Transforms
     public Transform frontRightTransform;
     public Transform frontLeftTransform;
     public Transform backRightTransform;
     public Transform backLeftTransform;
 
-
+    //Motion Variables
     public float acceleration = 500f;
     public float brakingForce = 200f;
     public float maxTurnAngle = 15f;
@@ -22,7 +25,9 @@ public class VehicleMovement : MonoBehaviour
     private float currentBrakeForce = 0f;
     private float currentTurnAngle = 0f;
 
-    private void FixedUpdate() // Handling all movement using WheelCollider
+
+    // Handling all movement using WheelCollider
+    private void FixedUpdate()
     {
         // Getting forward/reverse acceleration from vertical axis (W and S keys)
         currentAcceleration = acceleration * Input.GetAxis("Vertical");
@@ -55,12 +60,12 @@ public class VehicleMovement : MonoBehaviour
         UpdateWheel(backRight, backRightTransform);
 
     }
-
+    //Making wheel meshes move and rotate with collider movement.
     private void UpdateWheel(WheelCollider col, Transform trans)
     {
         // Get wheel collider state.
         Vector3 position;
-        Quaternion rotation;
+        Quaternion rotation; //Used to track 3D rotations
         col.GetWorldPose(out position, out rotation);
 
         // Set wheel collider state.
