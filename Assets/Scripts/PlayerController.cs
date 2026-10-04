@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     //Current Values (x = left/right, y = forward/back), private for internal use
     private Vector2 moveInput;
 
+    private float Test;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
